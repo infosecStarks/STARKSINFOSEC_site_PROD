@@ -99,12 +99,3 @@ enableRobotsTXT = true
   # email is also added to the footer of each post
   [params.author]
     name = "Starksinfosec" # Your name as shown in the RSS feed metadata
-
-# Asset pipeline configuration
-[module]
-  [[module.imports]]
-    path = "github.com/tailwindlabs/tailwindcss"
-    disable = false
-
-[build]
-  writeStats = true
