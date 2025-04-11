@@ -7,6 +7,31 @@ defaultContentLanguage = "en"
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
 
+# Production-specific configuration
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = true
+
+[imaging]
+  quality = 85
+  anchor = "Smart"
+  resampleFilter = "Lanczos"
+
+[caches]
+  [caches.getjson]
+    maxAge = "10m"
+  [caches.getcsv]
+    maxAge = "10m"
+  [caches.images]
+    maxAge = "1h"
+  [caches.assets]
+    maxAge = "1h"
+
 # Setup syntax highlighting without inline styles. For more information about
 # why you'd want to avoid inline styles, see
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src#unsafe_inline_styles
