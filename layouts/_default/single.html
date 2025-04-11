@@ -1,26 +1,36 @@
 {{ define "main" }}
-{{ if not .Params.menu }}
-<h1>{{ .Title }}</h1>
-<p class="byline">
-  <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
-    {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
-  </time>
-  {{ with .Params.author }}· {{.}}{{ end }}
-</p>
-{{ end }}
-<content>
-  {{ .Content }}
-</content>
-<p>
-  {{ range (.GetTerms "tags") }}
-    <a class="blog-tags" href="{{ .RelPermalink }}">#{{ lower .LinkTitle }}</a>
-  {{ end }}
-</p>
-{{ with .Site.Params.author.email }}
-  <p>
-    <a href='mailto:{{ . }}?subject={{ i18n "email-subject" }}"{{ default $.Site.Title $.Page.Title }}"'>
-      {{ i18n "email-reply" }} ↪
-    </a>
-  </p>
-{{ end }}
+<article class="max-w-4xl mx-auto px-4 py-8">
+    <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ .Title }}</h1>
+        <div class="flex items-center text-gray-600">
+            <time datetime="{{ .Date.Format "2006-01-02" }}" class="mr-4">
+                {{ .Date.Format "January 2, 2006" }}
+            </time>
+            <span class="reading-time">
+                {{ .ReadingTime }} min read
+            </span>
+        </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+        {{ .Content }}
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-gray-200">
+        <div class="flex justify-between items-center">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Share this post</h3>
+                <div class="flex space-x-4">
+                    <a href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}" 
+                       class="text-blue-600 hover:text-blue-800" target="_blank" rel="noopener">
+                        Twitter
+                    </a>
+                </div>
+            </div>
+            <a href="/blog" class="text-blue-600 hover:text-blue-800 font-medium">
+                ← Back to Blog
+            </a>
+        </div>
+    </footer>
+</article>
 {{ end }}

@@ -2,16 +2,71 @@
 <html lang="{{ .Site.LanguageCode }}">
 
 <head>
-  {{ partial "head.html" . }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+  
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ .Site.Params.favicon | relURL }}">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
+  <meta property="og:image" content="{{ .Site.Params.images | relURL }}">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="{{ .Permalink }}">
+  <meta property="twitter:title" content="{{ .Title }}">
+  <meta property="twitter:description" content="{{ .Description | default .Site.Params.description }}">
+  <meta property="twitter:image" content="{{ .Site.Params.images | relURL }}">
 </head>
 
-<body>
-  {{ partial "header.html" . }}
-  
-  <main class="main-content">
+<body class="min-h-screen bg-gray-50">
+  <header class="bg-white shadow-sm">
+    <nav class="container mx-auto px-4 py-4">
+      <div class="flex justify-between items-center">
+        <a href="{{ .Site.BaseURL }}" class="text-2xl font-bold text-gray-900">
+          {{ .Site.Title }}
+        </a>
+        <div class="space-x-4">
+          {{ range .Site.Menus.main }}
+          <a href="{{ .URL }}" class="text-gray-600 hover:text-gray-900">
+            {{ .Name }}
+          </a>
+          {{ end }}
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
     {{ block "main" . }}{{ end }}
   </main>
 
-  {{ partial "footer.html" . }}
+  <footer class="bg-gray-900 text-white mt-16">
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+        </div>
+        <div class="flex space-x-4">
+          {{ if .Site.Params.social.twitter }}
+          <a href="https://twitter.com/{{ .Site.Params.social.twitter }}" class="hover:text-gray-300">
+            Twitter
+          </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

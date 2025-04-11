@@ -1,3 +1,44 @@
 {{ define "main" }}
-{{ .Content }}
+<div class="container mx-auto px-4 py-8">
+    <header class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Welcome to STARKSINFOSEC</h1>
+        <p class="text-xl text-gray-600">Exploring the Intersection of Cybersecurity and AI</p>
+    </header>
+
+    <section class="mb-16">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-8">Latest Posts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                        <a href="{{ .RelPermalink }}" class="hover:text-blue-600 transition-colors duration-300">
+                            {{ .Title }}
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">{{ .Summary | truncate 150 }}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-500">{{ .Date.Format "January 2, 2006" }}</span>
+                        <a href="{{ .RelPermalink }}" class="text-blue-600 hover:text-blue-800 font-medium">
+                            Read More →
+                        </a>
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </section>
+
+    <section class="mb-16">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-8">About Me</h2>
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <p class="text-gray-700 leading-relaxed">
+                {{ .Site.Params.description | default "Cybersecurity professional passionate about AI and automation in security." }}
+            </p>
+            <a href="/about-me" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">
+                Learn More About Me →
+            </a>
+        </div>
+    </section>
+</div>
 {{ end }}

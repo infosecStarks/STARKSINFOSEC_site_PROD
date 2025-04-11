@@ -1,0 +1,13 @@
+{
+  "name": "starksinfosec-site",
+  "version": "1.0.0",
+  "description": "STARKSINFOSEC Blog Site",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/custom.css -o ./assets/css/style.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35"
+  }
+} 
