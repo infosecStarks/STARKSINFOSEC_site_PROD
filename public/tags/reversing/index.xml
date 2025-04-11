@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Reversing on StarksInfosec Research</title><link>https://starksinfosec.com/tags/reversing/</link><description>Recent content in Reversing on StarksInfosec Research</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>starksinfosec (CC BY 4.0)</copyright><lastBuildDate>Mon, 03 Apr 2023 11:44:55 +1000</lastBuildDate><atom:link href="https://starksinfosec.com/tags/reversing/index.xml" rel="self" type="application/rss+xml"/><item><title>First Post Introduction</title><link>https://starksinfosec.com/blog/introduction/</link><pubDate>Mon, 03 Apr 2023 11:44:55 +1000</pubDate><guid>https://starksinfosec.com/blog/introduction/</guid><description>Introduction to Starksinfosec Blog I’ll share my research and insights on various security-related topics in this blog. I’ll cover everything from Threat Research, Vulnerability Research, Red and Blue Teaming, and some of the latest news on security.
+My goal with this blog is to provide valuable information and resources to anyone interested in security, whether you’re just starting out or a seasoned pro. I’ll conduct research, share my experiences, and provide recommendations based on my findings.</description><content:encoded><![CDATA[<h2 id="introduction-to-starksinfosec-blog">Introduction to Starksinfosec Blog</h2>
+<!-- raw HTML omitted -->
+<p>I’ll share my research and insights on various security-related topics in this blog. I’ll cover everything from Threat Research, Vulnerability Research, Red and Blue Teaming, and some of the latest news on security.</p>
+<p>My goal with this blog is to provide valuable information and resources to anyone interested in security, whether you’re just starting out or a seasoned pro. I’ll conduct research, share my experiences, and provide recommendations based on my findings.</p>
+<p>So, if you’re ready to dive into the exciting world of infosec, then let’s get started!</p>
+<p>This is my current plan and what I will post on this site this year.</p>
+<ul>
+<li>Slowly add changes to the site over time.</li>
+<li>Post CTF writeups</li>
+<li>Current ongoing projects ( Full enterprise home lab setup at home)</li>
+<li>Home Server Upgrades</li>
+<li>Research on info topics</li>
+<li>Reversing Malware</li>
+</ul>
+<!-- raw HTML omitted -->
+]]></content:encoded></item></channel></rss>

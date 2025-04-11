@@ -1,0 +1,14 @@
+<a href="{{ .Site.Home.RelPermalink }}" class="title">
+    <h1>{{ .Site.Title }}</h1>
+</a>
+
+<p class="site-description">{{ .Site.Params.description }}</p>
+
+<nav>
+    {{- partial "nav.html" . -}}
+</nav>
+<div class="spacer" style="height: 20px;"></div> <!-- Adjust the height as needed -->
+<div class="center-text">
+    Discover. Break. Understand.
+</div>
+
