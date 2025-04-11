@@ -1,12 +1,102 @@
-<a href="{{ .Site.Home.RelPermalink }}" class="title">
-    <h1>{{ .Site.Title }}</h1>
-</a>
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo">
+            <a href="{{ .Site.BaseURL }}">
+                <h1>{{ .Site.Title }}</h1>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="{{ .Site.BaseURL }}">Home</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about-me">About</a></li>
+                <li><a href="/contact-me">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<style>
+.site-header {
+    background: var(--background-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-nav ul {
+        gap: 1rem;
+    }
+}
+</style>
 
 <p class="site-description">{{ .Site.Params.description }}</p>
 
-<nav>
-    {{- partial "nav.html" . -}}
-</nav>
 <div class="spacer" style="height: 20px;"></div> <!-- Adjust the height as needed -->
 <div class="center-text">
     Discover. Break. Understand.

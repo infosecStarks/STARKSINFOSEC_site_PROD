@@ -1,6 +1,6 @@
 ---
 title: "Journey Through Cybersecurity & AI Automation"
-date: 2024-03-21
+date: 2025-04-11
 description: "Reflecting on my journey as a SOC analyst and looking ahead to AI automation projects"
 tags: ["SOC", "AI", "Automation", "Cybersecurity"]
 categories: ["Personal Journey"]
