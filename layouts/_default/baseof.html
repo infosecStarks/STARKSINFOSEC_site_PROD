@@ -7,19 +7,6 @@
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="{{ .Description | default .Site.Params.description }}">
   
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
   
@@ -41,16 +28,16 @@
   <meta property="twitter:image" content="{{ .Site.Params.images | relURL }}">
 </head>
 
-<body class="min-h-screen bg-gray-50">
-  <header class="bg-white shadow-sm">
-    <nav class="container mx-auto px-4 py-4">
-      <div class="flex justify-between items-center">
-        <a href="{{ .Site.BaseURL }}" class="text-2xl font-bold text-gray-900">
+<body>
+  <header class="site-header">
+    <nav class="nav-container">
+      <div class="nav-content">
+        <a href="{{ .Site.BaseURL }}" class="site-title">
           {{ .Site.Title }}
         </a>
-        <div class="space-x-4">
+        <div class="nav-links">
           {{ range .Site.Menus.main }}
-          <a href="{{ .URL }}" class="text-gray-600 hover:text-gray-900">
+          <a href="{{ .URL }}" class="nav-link">
             {{ .Name }}
           </a>
           {{ end }}
@@ -59,17 +46,17 @@
     </nav>
   </header>
 
-  <main class="container mx-auto px-4 py-8">
+  <main class="main-container">
     {{ block "main" . }}{{ end }}
   </main>
 
-  <footer class="bg-gray-900 text-white mt-16">
-    <div class="container mx-auto px-4 py-8">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-copyright">
           <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
         </div>
-        <div class="flex space-x-4">
+        <div class="footer-social">
           {{ if .Site.Params.social.twitter }}
           <a href="https://twitter.com/{{ .Site.Params.social.twitter }}" class="hover:text-gray-300">
             Twitter
