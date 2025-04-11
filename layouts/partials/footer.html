@@ -1,3 +1,20 @@
-<small>
-  {{ .Site.Copyright }} | {{ markdownify .Site.Params.madeWith }}
-</small>
+<div class="footer-content">
+  <div class="footer-section">
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+  </div>
+  
+  <div class="footer-section">
+    <div class="social-links">
+      {{ with .Site.Params.social.twitter }}
+      <a href="https://twitter.com/{{ . }}" target="_blank" rel="noopener noreferrer">Twitter</a>
+      {{ end }}
+      {{ with .Site.Params.social.github }}
+      <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+      {{ end }}
+    </div>
+  </div>
+  
+  <div class="footer-section">
+    <p class="made-with">{{ with .Site.Params.madeWith }}{{ . | safeHTML }}{{ end }}</p>
+  </div>
+</div>

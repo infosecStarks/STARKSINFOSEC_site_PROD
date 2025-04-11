@@ -5,16 +5,20 @@
   <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/css/style.css">
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/modern.css">
 
   {{- partial "favicon.html" . -}}
   <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
 
-  {{- partial "seo_tags.html" . -}}
+  {{- partial "enhanced-seo.html" . -}}
   <meta name="referrer" content="no-referrer-when-downgrade" />
-
-  {{ $style := print (default "original" .Site.Params.themeStyle) ".css" | resources.Get | minify }}
-  <link href="{{ $style.RelPermalink }}" rel="stylesheet">
 
   {{ if (.Page.Store.Get "hasCodeBlock") }}
     {{ $syntax := resources.Get "syntax.css" | minify }}
@@ -26,41 +30,39 @@
     <link href="{{ $extra.RelPermalink }}" rel="stylesheet">
   {{ end }}
 
-
-
   {{ with .OutputFormats.Get "rss" -}}
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
 
-  <!-- A partial to be overwritten by the user.
-  Simply place a custom_head.html into
-  your local /layouts/partials-directory -->
   {{- partial "custom_head.html" . -}}
 </head>
 
 <body>
   {{ with .Params.banner }}
   <div class="banner" style="background-image: url('{{ . }}');">
-    <!-- Banner image only, no text here -->
+    <!-- Banner image with gradient overlay -->
   </div>
-{{ end }}
+  {{ end }}
 
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="site-title">{{ .Site.Title }}</a>
+        {{- partial "navigation.html" . -}}
+      </nav>
+    </div>
+  </header>
 
-<div class="container">
-  {{- partial "header.html" . -}}
-
-</div>
-
-
-  <main id="main-content">
-    {{- block "main" . }}{{- end }}
+  <main>
+    <div class="container">
+      {{- block "main" . }}{{- end }}
+    </div>
   </main>
 
   <footer>
-    {{- partial "footer.html" . -}}
+    <div class="container">
+      {{- partial "footer.html" . -}}
+    </div>
   </footer>
-
-  <!-- Additional body content -->
 </body>
-
 </html>
