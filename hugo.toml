@@ -1,5 +1,5 @@
 # Basic config
-baseURL = "https://starksinfosec.com"
+baseURL = "https://www.starksinfosec.com"
 theme = "hugo-bearcub"
 copyright = "starksinfosec (CC BY 4.0)"
 defaultContentLanguage = "en"
@@ -80,13 +80,13 @@ enableRobotsTXT = true
   description = "Cybersecurity professional passionate about AI and automation in security"
 
   # The path to your favicon
-  favicon = "images/favicon.png"
+  favicon = "images/banner.webp"
 
   # These images will show up when services want to generate a preview of a link
   # to your site. Ignored if `generateSocialCard = true`. For more information
   # about previews, see https://gohugo.io/templates/internal#twitter-cards and
   # https://gohugo.io/templates/internal#open-graph
-  images = ["images/share.webp"]
+  images = ["images/banner.webp"]
 
   banner = ["/images/banner.webp"]
 
