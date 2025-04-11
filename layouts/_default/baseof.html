@@ -1,68 +1,17 @@
 <!DOCTYPE html>
-<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+<html lang="{{ .Site.LanguageCode }}">
 
 <head>
-  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- Modern Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/modern.css">
-
-  {{- partial "favicon.html" . -}}
-  <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
-
-  {{- partial "enhanced-seo.html" . -}}
-  <meta name="referrer" content="no-referrer-when-downgrade" />
-
-  {{ if (.Page.Store.Get "hasCodeBlock") }}
-    {{ $syntax := resources.Get "syntax.css" | minify }}
-    <link href="{{ $syntax.RelPermalink }}" rel="stylesheet">
-  {{ end }}
-
-  {{ with .Params.style }}
-    {{ $extra := resources.Get . | minify }}
-    <link href="{{ $extra.RelPermalink }}" rel="stylesheet">
-  {{ end }}
-
-  {{ with .OutputFormats.Get "rss" -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-  {{ end -}}
-
-  {{- partial "custom_head.html" . -}}
+  {{ partial "head.html" . }}
 </head>
 
 <body>
-  {{ with .Params.banner }}
-  <div class="banner" style="background-image: url('{{ . }}');">
-    <!-- Banner image with gradient overlay -->
-  </div>
-  {{ end }}
-
-  <header>
-    <div class="container">
-      <nav>
-        <a href="/" class="site-title">{{ .Site.Title }}</a>
-        {{- partial "navigation.html" . -}}
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <div class="container">
-      {{- block "main" . }}{{- end }}
-    </div>
+  {{ partial "header.html" . }}
+  
+  <main class="main-content">
+    {{ block "main" . }}{{ end }}
   </main>
 
-  <footer>
-    <div class="container">
-      {{- partial "footer.html" . -}}
-    </div>
-  </footer>
+  {{ partial "footer.html" . }}
 </body>
 </html>
