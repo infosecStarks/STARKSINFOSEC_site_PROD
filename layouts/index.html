@@ -1,0 +1,45 @@
+{{ define "main" }}
+  <div class="container mx-auto px-4 py-8">
+    <!-- Latest Post Section -->
+    {{ $latestPost := (where .Site.RegularPages "Type" "blog") | first 1 }}
+    {{ range $latestPost }}
+      <div class="mb-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div class="p-6">
+          <h1 class="text-3xl font-bold mb-4">{{ .Title }}</h1>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-4">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            <span class="mx-2">•</span>
+            <span>{{ .ReadingTime }} min read</span>
+          </div>
+          <div class="prose dark:prose-invert max-w-none">
+            {{ .Summary }}
+          </div>
+          <a href="{{ .RelPermalink }}" class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+            Read More
+          </a>
+        </div>
+      </div>
+    {{ end }}
+
+    <!-- Recent Posts Grid -->
+    <h2 class="text-2xl font-bold mb-6">Recent Posts</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {{ $recentPosts := (where .Site.RegularPages "Type" "blog") | after 1 | first 6 }}
+      {{ range $recentPosts }}
+        <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">
+              <a href="{{ .RelPermalink }}" class="hover:text-blue-600 dark:hover:text-blue-400">{{ .Title }}</a>
+            </h3>
+            <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-4">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+              <span class="mx-2">•</span>
+              <span>{{ .ReadingTime }} min read</span>
+            </div>
+            <p class="text-gray-700 dark:text-gray-300">{{ .Summary | truncate 150 }}</p>
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+{{ end }} 
