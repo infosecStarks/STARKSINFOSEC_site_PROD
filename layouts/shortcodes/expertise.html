@@ -1,0 +1,8 @@
+<div class="expertise-grid">
+  {{ range .Site.Data.expertise }}
+    <div class="expertise-card">
+      <h3><a href="{{ .link }}">{{ .title }}</a></h3>
+      <p>{{ .desc }}</p>
+    </div>
+  {{ end }}
+</div>

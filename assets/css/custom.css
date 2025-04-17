@@ -265,3 +265,9 @@ body {
         grid-template-columns: 1fr;
     }
 } 
+
+/* Ensure latest post image fills card */
+article.post-card img {
+    width: 100%;
+    display: block;
+}
